@@ -13,7 +13,7 @@ Reproducible physics-guided modelling, surrogate prediction, and multi-objective
 - Physics-guided interpretation of manifold flow distribution, pin-fin heat transfer, and chip/substrate conduction.
 - Cubic response-surface surrogates compared with quadratic and Gaussian-process baselines.
 - Multi-objective Pareto optimization over dimensionless thermal resistance, pressure drop, and temperature non-uniformity.
-- Exact weight-simplex acceptability regions for preference-robust design selection.
+- Weight-simplex acceptability regions for preference-robust design selection.
 - Parameter-sensitivity analysis, uncertainty checks, machine-readable results, and regression tests.
 
 ## Key results
@@ -36,10 +36,22 @@ The workflow reads 84 supplied records: four no-pin-fin baseline samples and a `
 
 Python 3.10 or later is required. A virtual environment is recommended:
 
-    python -m venv .venv
-    .venv\Scripts\Activate.ps1
-    python -m pip install --upgrade pip
-    python -m pip install -e ".[dev]"
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+Install the project and development dependencies on either platform:
+
+```text
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev]"
+```
 
 Run the fast smoke check first:
 
@@ -72,13 +84,17 @@ See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for the verification record and exp
 
 ## Data and third-party materials
 
-The files in `data/raw/` are the original inputs used for the reported calculations. They are retained so that the numerical results can be reproduced, but they are not covered by the code's MIT License. The repository also contains third-party LaTeX support files and fonts needed for the included PDFs. Their terms are separate from the project license; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+The files in `data/raw/` are the original task statement and supplied inputs used for the reported calculations. They are retained because they are required for end-to-end reproduction, but they are not covered by the code's MIT License. The repository also contains third-party LaTeX support files and fonts required to reproduce the manuscript build. Their terms are separate from the project license; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 Reference-paper full texts and local drafting materials are not part of the repository. Citation metadata is kept in [references.bib](docs/paper/tex/references.bib).
 
 ## Paper
 
 The compiled manuscript is [docs/paper/tex/main.pdf](docs/paper/tex/main.pdf), with source in [docs/paper/tex/main.tex](docs/paper/tex/main.tex). The AI tool usage details are provided separately as [AI工具使用详情.pdf](docs/paper/tex/AI工具使用详情.pdf).
+
+## Citation
+
+Citation metadata for this repository is provided in [CITATION.cff](CITATION.cff).
 
 ## License
 

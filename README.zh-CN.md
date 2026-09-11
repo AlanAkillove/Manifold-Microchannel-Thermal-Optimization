@@ -36,10 +36,22 @@
 
 需要 Python 3.10 或更高版本。建议使用虚拟环境：
 
-    python -m venv .venv
-    .venv\Scripts\Activate.ps1
-    python -m pip install --upgrade pip
-    python -m pip install -e ".[dev]"
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+两个平台均执行以下安装命令：
+
+```text
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev]"
+```
 
 先运行快速检查：
 
@@ -75,3 +87,7 @@
 ## 许可证
 
 可复用代码按 [MIT License](LICENSE) 发布。题目附件、引用文献、LaTeX 模板、参考文献样式和字体仍分别适用其原有条款。
+
+## 引用
+
+仓库引用信息见 [CITATION.cff](CITATION.cff)。

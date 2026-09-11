@@ -11,4 +11,6 @@ The MIT License in [LICENSE](LICENSE) applies only to reusable project code. The
 | Fira Code Nerd Font | `docs/paper/tex/Fira Code Retina Nerd Font Complete.otf` | The embedded font metadata identifies the SIL Open Font License 1.1 or later. The font license remains separate from the MIT License. |
 | Cited research | Citation metadata in `docs/paper/tex/references.bib` | The underlying papers and their full texts belong to their respective authors and publishers. Full-text PDFs are not included in this repository. |
 
+The task statement and supplied data are intentionally retained under `data/raw/` because they are the exact inputs required to reproduce the reported calculations from start to finish. They are source materials for the school modeling exercise, not project code; this repository does not claim ownership of them or add a new license for them. Any terms provided by the original source remain controlling.
+
 The former `YaHei.Consolas.1.11b.ttf` file is not distributed in the repository because its redistribution terms could not be established from the file metadata. The manuscript now uses the bundled Fira Code font for monospaced listings; the former file is retained only in the external local archive.

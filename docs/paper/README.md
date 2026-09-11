@@ -8,7 +8,7 @@ The manuscript source and compiled documents are kept under `tex/` so that the r
 - [`AI工具使用详情.pdf`](tex/AI工具使用详情.pdf): AI tool usage details.
 - [`AI工具使用详情.tex`](tex/AI工具使用详情.tex): source for the AI tool usage details.
 - `cumcmthesis.cls` and `gbt7714-numerical.bst`: LaTeX class and bibliography style.
-- `fonts/` and the bundled Fira Code font: fonts used to reproduce the included PDFs.
+- `fonts/` and the bundled Fira Code font: fonts required to reproduce the manuscript build.
 
 To compile the manuscript, open a terminal in `docs/paper/tex/` and run:
 

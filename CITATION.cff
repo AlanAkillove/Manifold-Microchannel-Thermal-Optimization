@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "Manifold Microchannel Thermal Optimization"
+message: "If you use this repository, please cite it as follows."
+type: software
+authors:
+  - name: "AlanAkillove"
+version: "0.1.0"
+date-released: "2026-09-12"
+repository-code: "https://github.com/AlanAkillove/Manifold-Microchannel-Thermal-Optimization"
+url: "https://github.com/AlanAkillove/Manifold-Microchannel-Thermal-Optimization"
+license: MIT
+abstract: >-
+  Reproducible physics-guided modeling, surrogate prediction, and
+  multi-objective design optimization for manifold microchannel chip cooling.
+keywords:
+  - heat transfer
+  - microchannel cooling
+  - multi-objective optimization
+  - response surface methodology
+  - scientific computing
+  - surrogate modeling
+  - thermal management
