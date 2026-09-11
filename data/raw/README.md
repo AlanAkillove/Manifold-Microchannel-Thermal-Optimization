@@ -8,4 +8,4 @@
 | `attachment_1_structure.pdf` | 系统结构和参数说明 |
 | `attachment_2_results.xlsx` | 84 组结构参数与性能结果，作为计算输入 |
 
-题目附件的版权归原提供方所有，不属于项目代码的 MIT License 许可范围。
+题目附件的版权归原提供方所有，不属于项目代码的 MIT License 许可范围。有关来源和再分发边界，见项目根目录的 [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md)。

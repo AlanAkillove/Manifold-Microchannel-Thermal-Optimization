@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""运行全部数值计算，并写出论文所需的机器可读结果。"""
+"""运行数据分析流程，并按模式检查或写出论文所需的机器可读结果。"""
 
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 from pathlib import Path
@@ -216,7 +217,29 @@ def q4_cluster_definition(
     return definition, coverages
 
 
-def main() -> None:
+def run_quick() -> None:
+    """完成数据、模型和小网格的快速复现检查，不覆盖发布结果。"""
+    workbook = find_attachment2(ROOT)
+    frame = load_attachment2(workbook)
+    _, pin = split_topologies(frame)
+    model = CubicRSM.fit(pin.beta, pin.eta, pin.N, pin[["R", "P", "U"]])
+    folds = interlaced_folds(pin)
+    cv_rmse = polynomial_cv(pin, degree=3, folds=folds)
+    designs, values = evaluate_grid(model, beta_points=11, eta_points=11)
+    if not np.isfinite(values).all():
+        raise ValueError("快速检查的模型预测中存在非有限数值。")
+    summary = {
+        "mode": "quick",
+        "samples": int(len(frame)),
+        "pin_fin_samples": int(len(pin)),
+        "cv_rmse": dict(zip(("R", "P", "U"), cv_rmse)),
+        "grid_designs": int(len(designs)),
+        "pareto_candidates": int(nondominated_mask(values).sum()),
+    }
+    print(json.dumps(serializable(summary), ensure_ascii=False, indent=2))
+
+
+def run_full() -> None:
     workbook = find_attachment2(ROOT)
     output = ROOT / "outputs"
     tables = output / "tables"
@@ -591,6 +614,26 @@ def main() -> None:
             indent=2,
         )
     )
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="运行数据分析和优化流程。")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument(
+        "--quick",
+        action="store_true",
+        help="只进行数据、模型和小网格的快速检查，不覆盖发布结果。",
+    )
+    mode.add_argument(
+        "--full",
+        action="store_true",
+        help="运行完整分析并更新 outputs/ 下的机器可读结果。",
+    )
+    args = parser.parse_args()
+    if args.quick:
+        run_quick()
+    else:
+        run_full()
 
 
 if __name__ == "__main__":

@@ -102,11 +102,14 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 
 
 \RequirePackage{fontspec}
-\newfontfamily\yaheiconsola{YaHei.Consolas.1.11b.ttf}
+\newfontfamily\codemono[
+Contextuals={Alternate},
+ItalicFont = Fira Code Retina Nerd Font Complete.otf
+]{Fira Code Retina Nerd Font Complete.otf}
 \setmonofont[
 Contextuals={Alternate},
-ItalicFont = Fira Code Retina Nerd Font Complete.otf     % to avoid font warning
-]{YaHei.Consolas.1.11b.ttf}
+ItalicFont = Fira Code Retina Nerd Font Complete.otf
+]{Fira Code Retina Nerd Font Complete.otf}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 
@@ -125,7 +128,7 @@ ItalicFont = Fira Code Retina Nerd Font Complete.otf     % to avoid font warning
     showspaces=false,                
     showstringspaces=false,
     breakatwhitespace=false,         
-    basicstyle=\yaheiconsola,
+    basicstyle=\codemono,
     keywordstyle=\color{NavyBlue},
     commentstyle=\color{codegreen},
     numberstyle=\color{gray},
