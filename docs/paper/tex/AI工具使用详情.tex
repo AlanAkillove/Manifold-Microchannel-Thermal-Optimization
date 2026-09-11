@@ -1,0 +1,128 @@
+%!TEX program = xelatex
+\documentclass[UTF8,a4paper,11pt]{ctexart}
+
+\usepackage[margin=2.35cm,headheight=14pt]{geometry}
+\usepackage{fontspec}
+\setCJKmainfont[
+  Path=fonts/,
+  BoldFont=SourceHanSerifCN-Bold.otf
+]{SourceHanSerifCN-Regular.otf}
+\setmainfont{TeX Gyre Termes}
+\usepackage{amsmath,amssymb}
+\usepackage{array,booktabs,tabularx}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.35em}
+\linespread{1.18}
+\setlist[itemize]{leftmargin=2.2em,itemsep=0.15em,topsep=0.2em}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.35}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small AI工具使用详情}
+\rhead{\small 本次建模任务}
+\cfoot{\small \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\title{\vspace{-1.2cm}\textbf{AI工具使用详情}}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-1.2cm}
+\begin{center}
+  \large 芯片歧管式微通道热管理系统的建模与多目标优化
+\end{center}
+\vspace{0.35em}
+
+本文档根据本次建模过程中 AI 工具的实际使用情况整理，说明所用工具、主要用途、使用方式以及对 AI 输出的人工修改和核验情况。
+
+\section{使用的 AI 工具}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\textwidth}{L{2.6cm} L{4.1cm} Y}
+\toprule
+\textbf{AI工具} & \textbf{版本或型号} & \textbf{主要用途} \\
+\midrule
+ChatGPT 网页端 & GPT-5.6 Sol & 赛题理解、结构分析、建模思路讨论、文献辅助、结果解释和论文修改。 \\
+OpenAI Codex & GPT-5.6 Sol & Python 代码编写与调试、数据处理、模型计算、数据图表和 \LaTeX{} 文档修改。 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{主要用途和使用环节}
+
+\subsection{赛题理解与结构分析}
+
+使用 ChatGPT 辅助梳理歧管层、微通道层、针肋、芯片热源以及冷却液流动路径之间的关系。早期讨论中，AI 对部分三维结构和图中针肋、微通道的对应关系理解存在偏差；参赛者重新阅读附件中的文字和示意图，并结合相关文献进行核对，修正了结构认识。之后的机理分析、模型讨论和图示均以修正后的结构为基础。
+
+\subsection{模型讨论与检查}
+
+使用 ChatGPT 辅助讨论歧管中的流量分配、针肋区域的换热过程以及芯片和衬底中的热传导，并比较不同建模思路的适用条件。参赛者依据题目信息、相关文献和附件数据筛选这些思路。例如，对于附件无法直接确定的支路压力与流量关系，仅保留能够由现有信息支持的局部近似；对于由几何参数构造的组合量，则先通过数据比较其解释效果，再决定是否采用。最终使用的模型由参赛者确定，并逐项检查公式、量纲和边界条件。
+
+\subsection{数据分析与代理模型}
+
+使用 AI 辅助分析附件数据的组织形式，识别无针肋基准样本和有针肋全因子样本，讨论二次、三次响应面和高斯过程等代理模型及交叉验证方法。Codex 用于实现数据读取、模型拟合和验证程序；参赛者根据交叉验证结果、模型复杂度以及附件数据的覆盖范围，确定采用三次响应面进行后续分析。
+
+\subsection{优化与稳定性分析}
+
+使用 AI 辅助比较多目标优化、指标权重变化和参数扰动分析的不同处理方法，包括 Pareto 非支配筛选和归一化折中准则等。结合本题的变量类型和取值范围，参赛者确定求解流程，并通过程序检查可行域、整数排数约束和代理模型适用范围，重新计算相关结果。
+
+\subsection{程序实现、绘图与论文修改}
+
+Codex 用于实现和调试数据处理、模型拟合、交叉验证、Pareto 筛选、权重分析、扰动搜索及绘图程序，也用于修改论文的 \LaTeX{} 文档。参赛者检查程序输入、关键计算、计算结果、坐标单位和图例。流程图、系统结构图和问题一的模型示意图的内容及布局由参赛者确定并人工设计绘制；数据图由程序计算生成后，再人工核对坐标、单位、图例和数据对应关系。ChatGPT 和 Codex 还用于论文结构、术语、图题、语言和排版的修改。
+
+\section{主要提示方式与使用过程}
+
+使用过程中通常先提供题目条件、附件信息或已经形成的模型草案，再要求 AI 进行解释、比较、检查或按既定要求实现；参赛者根据附件、文献和程序结果筛选建议并继续修改。
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\textwidth}{L{1.65cm} L{5.05cm} L{3.15cm} Y}
+\toprule
+\textbf{环节} & \textbf{主要提示方式} & \textbf{AI 提供的帮助} & \textbf{后续处理} \\
+\midrule
+结构理解 & 提供题目和附件中的结构信息，请 AI 解释各部分的空间关系和冷却液流动路径，并检查当前理解是否存在错误。 & 解释结构和流动过程 & 对照附件与文献核对，修正早期结构理解。 \\
+模型讨论 & 提供已有模型草案，请 AI 比较不同处理方法，并检查模型假设、公式和适用条件。 & 提出建模思路并指出可能问题 & 检查守恒关系、量纲、边界条件和数据支持。 \\
+文献辅助 & 检索与换热、流量分配、代理模型和优化有关的研究，并整理可能相关的文献和方法。 & 提供检索线索和内容概括 & 人工核对最终引用文献的书目信息和主要结论。 \\
+数据与代码 & 按已确定的模型和数据处理规则实现分析、验证和计算结果输出。 & 编写或修改 Python 程序 & 检查数据读取、计算过程和计算结果，必要时重新运行。 \\
+优化分析 & 比较多目标优化、权重变化分析和参数扰动分析的不同实现方式。 & 比较方法和实现方式 & 结合变量类型、约束和程序结果确定方法。 \\
+论文修改 & 检查段落逻辑、术语、图题、重复表达和 \LaTeX{} 排版。 & 提供修改建议并协助修改代码 & 参赛者逐段调整，使表述与实际模型和结果一致。 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\clearpage
+\section{AI输出的采纳、修改和人工核验}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabularx}{\textwidth}{L{2.05cm} L{4.15cm} Y}
+\toprule
+\textbf{使用环节} & \textbf{AI输出} & \textbf{人工处理与核验} \\
+\midrule
+系统结构理解 & 对歧管层、微通道层、针肋及流动路径的解释。 & 对照附件结构图和相关文献重新核对；早期存在偏差的解释未沿用，并据此修正系统结构认识和示意图。 \\
+问题一建模 & 关于支路压降、局部换热和温度分布的建模建议，以及对结构参数作用的分析。 & 检查质量守恒、能量守恒、量纲、边界条件和适用范围，结合可获得数据修改模型关系。 \\
+问题二代理模型 & 对响应面、高斯过程等模型的比较建议，以及交叉验证方案。 & 通过 Python 进行结构化交叉验证和数据核对，根据交叉验证结果、模型复杂度和数据覆盖范围确定三次响应面。 \\
+问题三至五 & 多目标优化、权重分析、敏感性和扰动分析的处理建议。 & 检查参数范围、整数约束和代理模型适用性，最终数值由程序重新计算。 \\
+代码与图表 & Python 分析代码、绘图代码和 \LaTeX{} 文档的编写、修改及调试建议。 & 检查输入数据、索引、关键公式、计算结果、坐标、单位和图例，并对主要流程重新运行。 \\
+图示与论文写作 & 图示布局、文字表达、术语和排版方面的建议。 & 流程图、系统结构图和模型示意图的内容及布局由参赛者确定并人工设计绘制；论文内容逐段修改并与实际计算结果核对。 \\
+文献辅助 & 相关论文线索、书目信息和内容概括。 & 人工核对题名、作者、期刊、年份及关键结论后确定引用内容。 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+AI 参与了思路讨论、模型检查和代码实现。最终采用哪些模型和假设，以及如何解释计算结果和撰写论文，均由参赛者根据题目信息、相关文献和实际计算结果确定。
+
+\end{document}

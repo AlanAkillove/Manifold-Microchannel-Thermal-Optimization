@@ -1,0 +1,7 @@
+design,radius_percent,maximum_degradation_percent,controlling_response
+Q3 nominal,1,1.37401112303,P
+Q3 nominal,3,4.18218890535,P
+Q3 nominal,5,7.09559986021,P
+Q4 preference-robust,1,1.28069127089,P
+Q4 preference-robust,3,3.89773250061,P
+Q4 preference-robust,5,6.61775462258,P
